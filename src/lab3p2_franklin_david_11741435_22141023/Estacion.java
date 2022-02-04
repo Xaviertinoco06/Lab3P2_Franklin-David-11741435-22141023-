@@ -1,17 +1,17 @@
 package lab3p2_franklin_david_11741435_22141023;
 
-public class Rutas {
+public class Estacion {
 String nombre;
 int x;
 int y;
 
-    public Rutas(String nombre, int x, int y) {
+    public Estacion(String nombre, int x, int y) {
         this.nombre = nombre;
         this.x = x;
         this.y = y;
     }
 
-    public Rutas() {
+    public Estacion() {
     }
 
     public String getNombre() {

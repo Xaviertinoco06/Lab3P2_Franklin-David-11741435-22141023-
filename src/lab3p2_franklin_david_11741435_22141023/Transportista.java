@@ -7,7 +7,7 @@ public class Transportista extends Persona {
     int timeexp;
     String apodo;
 
-    public Transportista(int timeexp, String apodo, String nombre, int id, Date fecha) {
+    public Transportista(int timeexp, String apodo, String nombre, long id, String fecha) {
         super(nombre, id, fecha);
         this.timeexp = timeexp;
         this.apodo = apodo;

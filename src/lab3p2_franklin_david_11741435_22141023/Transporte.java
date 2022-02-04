@@ -2,20 +2,20 @@ package lab3p2_franklin_david_11741435_22141023;
 
 import java.util.ArrayList;
 
-public class Tranporte {
+public class Transporte {
 String placa;
 String color;
 String transportista;
-ArrayList<Rutas> rutas;
+ArrayList<Estacion> rutas;
 
-    public Tranporte(String placa, String color, String transportista, ArrayList<Rutas> rutas) {
+    public Transporte(String placa, String color, String transportista, ArrayList<Estacion> rutas) {
         this.placa = placa;
         this.color = color;
         this.transportista = transportista;
         this.rutas = rutas;
     }
 
-    public Tranporte() {
+    public Transporte() {
     }
 
     public String getPlaca() {
@@ -42,11 +42,11 @@ ArrayList<Rutas> rutas;
         this.transportista = transportista;
     }
 
-    public ArrayList<Rutas> getRutas() {
+    public ArrayList<Estacion> getRutas() {
         return rutas;
     }
 
-    public void setRutas(ArrayList<Rutas> rutas) {
+    public void setRutas(ArrayList<Estacion> rutas) {
         this.rutas = rutas;
     }
 
