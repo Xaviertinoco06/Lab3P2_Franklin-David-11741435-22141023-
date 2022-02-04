@@ -7,7 +7,7 @@ public class Transportista extends Persona {
     int timeexp;
     String apodo;
 
-    public Transportista(int timeexp, String apodo, String nombre, long id, String fecha) {
+    public Transportista(int timeexp, String apodo, String nombre, String id, String fecha) {
         super(nombre, id, fecha);
         this.timeexp = timeexp;
         this.apodo = apodo;
@@ -34,7 +34,7 @@ public class Transportista extends Persona {
 
     @Override
     public String toString() {
-        return "Transportista" + "time de experiencia = " + timeexp + ", apodo = " + apodo;
+        return " tiempo de experiencia = " + timeexp + " apodo = " + apodo;
     }
     
 }

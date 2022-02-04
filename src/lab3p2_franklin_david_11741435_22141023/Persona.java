@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Persona {
 String nombre;
-long id;
+String id;
 String fecha;
 
     public Persona() {
     }
 
-    public Persona(String nombre, long id, String fecha) {
+    public Persona(String nombre, String id, String fecha) {
         this.nombre = nombre;
         this.id = id;
         this.fecha = fecha;
@@ -24,11 +24,11 @@ String fecha;
         this.nombre = nombre;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

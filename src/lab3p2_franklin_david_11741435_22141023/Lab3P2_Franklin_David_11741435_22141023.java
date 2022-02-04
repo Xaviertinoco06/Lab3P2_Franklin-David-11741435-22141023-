@@ -13,12 +13,16 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
     static ArrayList clases = new ArrayList();
     static ArrayList ruta = new ArrayList();
     static ArrayList trans = new ArrayList();
+    static ArrayList buses = new ArrayList();
+    static ArrayList taxi = new ArrayList();
+    static ArrayList mototaxi = new ArrayList();
+    static ArrayList rapidito = new ArrayList();
 
     public static void main(String[] args) {
-
-        persona.add(new Alumno(11741435, clases, "David Reyes", 1, "13/04/1999"));
-        persona.add(new Alumno(11741435, clases, "Franklin Rodriguez", 2, "06/10/2004"));
-        persona.add(new Transportista(5, "Don Jose", "Jose Alvarado", 3, "10/05/1980"));
+        clases.add(new Clase("1302", "Español"));
+        persona.add(new Alumno("43823490", clases, "David Reyes", "901231814", "13/04/1999"));
+        persona.add(new Alumno("12893741", clases, "Franklin Rodriguez", "1238914413", "06/10/2004"));
+        persona.add(new Transportista(5, "Don Jose", "Jose Alvarado", "1293012412", "10/05/1980"));
         do {
 
             Opciones(menu());
@@ -53,7 +57,7 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
                 break;
 
             case 4:
-                agregarClase();
+                agregarClaseAlumno();
                 break;
 
             case 5:
@@ -63,22 +67,22 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
                 CrearTransporte();
                 break;
             case 7:
-
+                simulacion();
                 break;
             case 8:
-
+                listar();
                 break;
             case 9:
-
+                listarestaciones();
                 break;
             case 10:
-
+                listarAlummnos();
                 break;
             case 11:
-
+                listarTransportista();
                 break;
             case 12:
-
+                listarTransporte();
                 break;
             case 0:
                 System.exit(0);
@@ -101,19 +105,19 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
         ruta.add(new Estacion(nombre, x, y));
     }
 
-    public static void agregarClase() {
-        for (Object o : clases) {
-            System.out.println(clases.indexOf(o) + ". " + o);
-        }
-        System.out.println("Ingrese la opcion que desea elegir");
-        int opcion = scan.nextInt();
-        for (Object object : persona) {
-            if (object instanceof Alumno) {
-                System.out.println(persona.indexOf(object) + ". " + object);
-            }
-        }
-        System.out.println("Ingrese al alumno que desea agregarle la clase");
-        int al = scan.nextInt();
+    public static void agregarClaseAlumno() {
+        listarAlummnos();
+        System.out.println("Ingrese la posicion del Alumno en la lista");
+
+        int posicion1 = scan.nextInt();
+        listar();
+        System.out.println("Ingrese el nombre de la clase en la lista");
+
+        String Name = scan.next();
+        System.out.println("Ingrese el codigo de la clase en la lista");
+        String codigo = scan.next();
+        ((Alumno) persona.get(posicion1)).getClases().add(new Clase(codigo, Name));
+        System.out.println("Clase ingresada correctamente");
 
     }
 
@@ -142,8 +146,27 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
         System.out.print("Ingrese Transportista: ");
 
         String transportista = scan.next();
+        System.out.println("Ingrese el tipo de transporte 1.Buses\n2.Rapidito\n3.Taxi\n4.Mototaxi");
+        int opcion = scan.nextInt();
+        switch (opcion) {
+            case 1:
+                System.out.println("Ingrese el numero de sillas");
+                int sillas = scan.nextInt();
+                System.out.println("Ingrese la capacidad de las personas en pie");
+                int pie = scan.nextInt();
+                trans.add(new Transporte(placa, color, transportista, ruta, buses));
+                break;
+            case 2:
+                trans.add(new Transporte(placa, color, transportista, ruta, rapidito));
+                break;
+            case 3:
+                trans.add(new Transporte(placa, color, transportista, ruta, taxi));
+                break;
+            case 4:
+                trans.add(new Transporte(placa, color, transportista, ruta, mototaxi));
+                break;
+        }
 
-        trans.add(new Transporte(placa, color, transportista, ruta));
     }
 
     public static void CrearTransportista() {
@@ -158,14 +181,14 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
         System.out.println("Ingrese el nombre");
         String name = scan.next();
         System.out.println("Ingrese el id");
-        Long id = scan.nextLong();
+        String id = scan.next();
         for (int i = 0; i < persona.size(); i++) {
             for (Object object : persona) {
                 if (object instanceof Persona) {
-                    if (id == ((Persona) object).id) {
+                    if (id.equals(((Persona) object).id)) {
                         System.out.println("Id Ocupada");
                         System.out.println("Ingrese el id");
-                        id = scan.nextLong();
+                        id = scan.next();
                         break;
                     }
                 }
@@ -176,7 +199,7 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
         persona.add(new Transportista(timexp, apodo, name, id, fecha));
     }
 
-    public static void CrearClases() {
+    public static void CrearClase() {
 
         System.out.print("Nombre de las clase ");
 
@@ -184,15 +207,15 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
 
         System.out.print("Ingrese codigo de la clase: ");
 
-        long codigo = scan.nextLong();
+        String codigo = scan.next();
 
         for (int i = 0; i < clases.size(); i++) {
             for (Object object : clases) {
                 if (object instanceof Persona) {
-                    if (codigo == ((Clase) object).codigo) {
+                    if (codigo.equals(((Clase) object).codigo)) {
                         System.out.println("Codigo Ocupado");
                         System.out.println("Ingrese el codigo");
-                        codigo = scan.nextLong();
+                        codigo = scan.next();
                         break;
                     }
                 }
@@ -208,30 +231,28 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
 
         System.out.println("Ingrese su id de estudiante ");
 
-        Long ids = scan.nextLong();
+        String ids = scan.next();
         for (int i = 0; i < persona.size(); i++) {
             for (Object object : persona) {
                 if (object instanceof Persona) {
-                    if (ids== ((Persona) object).id) {
+                    if (ids.equals(((Persona) object).id)) {
                         System.out.println("id Ocupado");
                         System.out.println("Ingrese el id de estudiante ");
-                        ids = scan.nextLong();
+                        ids = scan.next();
                         break;
                     }
                 }
             }
         }
-        System.out.println("Ingrese el nombre");
-        String name = scan.next();
         System.out.println("Ingrese el id");
-        Long id = scan.nextLong();
+        String id = scan.next();
         for (int i = 0; i < persona.size(); i++) {
             for (Object object : persona) {
                 if (object instanceof Persona) {
-                    if (id == ((Persona) object).id) {
+                    if (id.equals(((Persona) object).id)) {
                         System.out.println("Id Ocupada");
                         System.out.println("Ingrese el id");
-                        id = scan.nextLong();
+                        id = scan.next();
                         break;
                     }
                 }
@@ -239,10 +260,52 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
         }
         System.out.println("Ingrese la fecha de nacimiento dd/mm/yyyy: ");
         String fecha = scan.next();
-        persona.add(new Alumno(ids,clases, name, id, fecha));
-    }
-    public static void CrearClase(){
-        
+        persona.add(new Alumno(ids, clases, nombreaalumno, id, fecha));
     }
 
+    public static void listar() {
+        for (Object clase : clases) {
+            System.out.println(clases.indexOf(clase) + ". " + clase);
+        }
+    }
+
+    public static void listarestaciones() {
+        for (Object object : ruta) {
+            System.out.println(ruta.indexOf(object) + "" + object);
+        }
+    }
+
+    public static void listarAlummnos() {
+        for (Object object : persona) {
+            if (object instanceof Alumno) {
+                System.out.println(persona.indexOf(object) + " " + ((Alumno) object).nombre + " " + ((Alumno) object).fecha + " " + " " + ((Alumno) object).id + " " + object);
+            }
+
+        }
+    }
+
+    public static void listarTransportista() {
+
+        for (Object object : persona) {
+
+            if (object instanceof Transportista) {
+
+                System.out.println(persona.indexOf(object) + "" + ((Transportista) object).nombre + " " + ((Transportista) object).fecha + " " + ((Transportista) object).id + object);
+
+            }
+        }
+    }
+
+    public static void listarTransporte() {
+
+        for (Object object : trans) {
+
+            System.out.println(trans.indexOf(object) + "" + object);
+
+        }
+    }
+
+    public static void simulacion() {
+
+    }
 }

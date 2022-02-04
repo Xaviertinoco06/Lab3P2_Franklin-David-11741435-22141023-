@@ -7,15 +7,17 @@ String placa;
 String color;
 String transportista;
 ArrayList<Estacion> rutas;
+ArrayList tipo;
 
-    public Transporte(String placa, String color, String transportista, ArrayList<Estacion> rutas) {
+    public Transporte() {
+    }
+
+    public Transporte(String placa, String color, String transportista, ArrayList<Estacion> rutas, ArrayList tipo) {
         this.placa = placa;
         this.color = color;
         this.transportista = transportista;
         this.rutas = rutas;
-    }
-
-    public Transporte() {
+        this.tipo = tipo;
     }
 
     public String getPlaca() {
@@ -50,9 +52,18 @@ ArrayList<Estacion> rutas;
         this.rutas = rutas;
     }
 
+    public ArrayList getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(ArrayList tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
-        return "Tranporte " + "placa= " + placa + ", color= " + color + ", transportista= " + transportista + ", rutas= " + rutas ;
+        return "Transporte " + "placa= " + placa + ", color= " + color + ", transportista= " + transportista + ", rutas= " + rutas + ", tipo= " + tipo ;
     }
+
 
 }

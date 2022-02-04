@@ -1,19 +1,19 @@
 package lab3p2_franklin_david_11741435_22141023;
 
 public class Clase {
-Long codigo;
+String codigo;
 String Name;
 
-    public Clase(Long codigo, String Name) {
+    public Clase(String codigo, String Name) {
         this.codigo = codigo;
         this.Name = Name;
     }
 
-    public Long getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Long codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

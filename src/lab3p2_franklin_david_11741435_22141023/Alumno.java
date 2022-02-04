@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Alumno extends Persona{
-    long estudentid;
+   String estudentid;
     ArrayList <Clase> clases;
 
-    public Alumno(long estudentid, ArrayList<Clase> clases, String nombre, long id, String fecha) {
+    public Alumno(String estudentid, ArrayList<Clase> clases, String nombre, String id, String fecha) {
         super(nombre, id, fecha);
         this.estudentid = estudentid;
         this.clases = clases;
@@ -16,11 +16,11 @@ public class Alumno extends Persona{
     public Alumno() {
     }
 
-    public long getEstudentid() {
+    public String getEstudentid() {
         return estudentid;
     }
 
-    public void setEstudentid(long estudentid) {
+    public void setEstudentid(String estudentid) {
         this.estudentid = estudentid;
     }
 
@@ -34,7 +34,7 @@ public class Alumno extends Persona{
 
     @Override
     public String toString() {
-        return "Alumno " + "estudiante identidad= " + estudentid + ", clases= " + clases ;
+        return "id de estudiante= " + estudentid + ", clases= " + clases ;
     }
     
     
