@@ -36,8 +36,8 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
     }
 
     public static int menu() {
-
-        System.out.println("\n0. Salir\n1. Crear Clase\n2. Crear Ruta\n3. Crear Alumno\n4. Agregar Clase a Alumno\n5. Crear Transpartista\n6.Crear Trasporte\n7.Simulacion\n8.Listar Clase "
+        System.err.println("Advertencia, En caso que el listar no sirva vuelva a hacer la opcion");
+        System.out.println("0. Salir\n1. Crear Clase\n2. Crear Ruta\n3. Crear Alumno\n4. Agregar Clase a Alumno\n5. Crear Transpartista\n6.Crear Trasporte\n7.Simulacion\n8.Listar Clase "
                 + "\n9,Listar Rutas\n10.Listar Alumnos \n11.Listar Trasportista\n12.Listar Transportes\nIngrese una opcion: ");
 
         return scan.nextInt();
@@ -96,8 +96,8 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
     public static void CrearRuta() {
 
         System.out.print("Ingrese Estacion: ");
-
-        String nombre = scan.next();
+        scan.next();
+        String nombre = scan.nextLine();
 
         System.out.print("Ingrese Coordenada X: ");
 
@@ -231,7 +231,7 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
 
         for (int i = 0; i < clases.size(); i++) {
             for (Object object : clases) {
-                if (object instanceof Persona) {
+                if (object instanceof Clase) {
                     if (codigo.equals(((Clase) object).codigo)) {
                         System.out.println("Codigo Ocupado");
                         System.out.println("Ingrese el codigo");
