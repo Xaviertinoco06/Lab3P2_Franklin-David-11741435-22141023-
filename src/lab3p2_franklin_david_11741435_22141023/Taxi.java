@@ -1,14 +1,18 @@
 package lab3p2_franklin_david_11741435_22141023;
 
+import java.util.ArrayList;
+
 public class Taxi {
-int capacidad;
-int id;
+
+    int capacidad;
+    ArrayList<Alumno> alumnos = new ArrayList(capacidad);
+    String id;
 
     public Taxi() {
     }
 
-    public Taxi(int capacidad, int id) {
-        this.capacidad = capacidad;
+    public Taxi(ArrayList alumnos, String id) {
+        this.alumnos = alumnos;
         this.id = id;
     }
 
@@ -20,17 +24,17 @@ int id;
         this.capacidad = capacidad;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     @Override
     public String toString() {
-        return "Taxi " + "capacidad= " + capacidad + ", id= " + id ;
+        return "Taxi " + "capacidad= " + capacidad + ", id= " + id;
     }
 
 }

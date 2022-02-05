@@ -17,10 +17,14 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
     static ArrayList taxi = new ArrayList();
     static ArrayList mototaxi = new ArrayList();
     static ArrayList rapidito = new ArrayList();
+    
 
     public static void main(String[] args) {
         clases.add(new Clase("1302", "Español"));
-        persona.add(new Alumno("43823490", clases, "David Reyes", "901231814", "13/04/1999"));
+        clases.add(new Clase("1239", "Algebra"));
+        clases.add(new Clase("1415", "Historia"));
+        clases.add(new Clase("1516","Filosofia"));
+        persona.add(new Alumno("43823490",clases, "David Reyes", "901231814", "13/04/1999"));
         persona.add(new Alumno("12893741", clases, "Franklin Rodriguez", "1238914413", "06/10/2004"));
         persona.add(new Transportista(5, "Don Jose", "Jose Alvarado", "1293012412", "10/05/1980"));
         do {
@@ -154,15 +158,31 @@ public class Lab3P2_Franklin_David_11741435_22141023 {
                 int sillas = scan.nextInt();
                 System.out.println("Ingrese la capacidad de las personas en pie");
                 int pie = scan.nextInt();
+                int max=sillas+pie;
+                for (int i = 0; i < max; i++) {
+                    buses.add(new Buses(persona, sillas, pie));
+                }
+                
                 trans.add(new Transporte(placa, color, transportista, ruta, buses));
                 break;
             case 2:
+                System.out.println("Ingrese el numero de sillas");
+                 sillas = scan.nextInt();
+                for (int i = 0; i < sillas; i++) {
+                    rapidito.add(new Rapidito(sillas, persona));
+                }
                 trans.add(new Transporte(placa, color, transportista, ruta, rapidito));
                 break;
             case 3:
+                System.out.println("Ingrese el id del taxi");
+                String idt = scan.next();
+                for (int i = 0; i < 3; i++) {
+                    taxi.add(new Taxi(persona,idt));
+                }
                 trans.add(new Transporte(placa, color, transportista, ruta, taxi));
                 break;
             case 4:
+                mototaxi.add(new MotoTaxi());
                 trans.add(new Transporte(placa, color, transportista, ruta, mototaxi));
                 break;
         }
